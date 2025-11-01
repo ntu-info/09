@@ -3,6 +3,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css' 
+import { HashRouter, Routes, Route } from 'react-router-dom'
 
 function ErrorBoundary({ children }) {
   const [err, setErr] = React.useState(null)
@@ -33,8 +34,11 @@ console.log('[main] booting...') // smoke test：打開 DevTools 會看到
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
+  <HashRouter>
+    <Routes>
+      <Route path="/*" element={<App />} />
+    </Routes>
+  </HashRouter>
+</ErrorBoundary>
   </React.StrictMode>
 )
-
