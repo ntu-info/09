@@ -61,7 +61,7 @@ export function NiiViewer({ query }) {
 
   const mapUrl = useMemo(() => {
     if (!query) return ''
-    const u = new URL(`${API_BASE}/query/${encodeURIComponent(query)}/nii`)
+    const u = `${API_BASE}/query/${encodeURIComponent(query)}/nii`
     u.searchParams.set('voxel', String(voxel))
     u.searchParams.set('fwhm', String(fwhm))
     u.searchParams.set('kernel', String(kernel))
