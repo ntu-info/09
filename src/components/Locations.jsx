@@ -1,3 +1,4 @@
+import { API_BASE } from '../api'
 // Locations.jsx
 import { useEffect, useMemo, useState } from 'react'
 
@@ -25,11 +26,11 @@ export function Locations ({ query }) {
     ;(async () => {
       setLoading(true); setErr('')
       try {
-        const u = new URL(`/query/${encodeURIComponent(query)}/locations`, window.location.origin)
+        const u = new URL(`${API_BASE}/query/${encodeURIComponent(query)}/locations`)
         u.searchParams.set('r', String(r))
         if (limit != null) u.searchParams.set('limit', String(limit))
         if (offset) u.searchParams.set('offset', String(offset))
-        const res = await fetch(u.pathname + u.search, { signal: ac.signal })
+        const res = await fetch(u.toString(), { signal: ac.signal })
         const data = await res.json().catch(()=>({}))
         if (!res.ok) throw new Error(data?.error || `HTTP ${res.status}`)
         if (!alive) return

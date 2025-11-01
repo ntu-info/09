@@ -4,6 +4,8 @@ import react from '@vitejs/plugin-react'
 import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
+  base: '/',
+
   plugins: [react()],
   resolve: {
     alias: {
@@ -11,12 +13,7 @@ export default defineConfig({
     }
   },
   server: {
-    allowedHosts: ['mil.psy.ntu.edu.tw'],
-    proxy: {
-      '/terms': 'https://mil.psy.ntu.edu.tw:5000',
-      '/query': 'https://mil.psy.ntu.edu.tw:5000',
-      '/help': 'https://mil.psy.ntu.edu.tw:5000',
-    }
+    allowedHosts: ['mil.psy.ntu.edu.tw']
   }
 })
 

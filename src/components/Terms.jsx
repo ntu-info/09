@@ -1,3 +1,4 @@
+import { API_BASE } from '../api'
 import { useEffect, useMemo, useState } from 'react'
 
 export function Terms ({ onPickTerm }) {
@@ -13,7 +14,7 @@ export function Terms ({ onPickTerm }) {
       setLoading(true)
       setErr('')
       try {
-        const res = await fetch('/terms', { signal: ac.signal })
+        const res = await fetch(`${API_BASE}/terms`, { signal: ac.signal })
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         const data = await res.json()
         if (!alive) return

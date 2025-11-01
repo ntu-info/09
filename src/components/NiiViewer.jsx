@@ -1,3 +1,4 @@
+import { API_BASE } from '../api'
 
 // 顯示設定：讓 x>0 出現在畫面右側（右腦在右）
 const X_RIGHT_ON_SCREEN_RIGHT = true;
@@ -60,7 +61,7 @@ export function NiiViewer({ query }) {
 
   const mapUrl = useMemo(() => {
     if (!query) return ''
-    const u = new URL(`/query/${encodeURIComponent(query)}/nii`, window.location.origin)
+    const u = new URL(`${API_BASE}/query/${encodeURIComponent(query)}/nii`)
     u.searchParams.set('voxel', String(voxel))
     u.searchParams.set('fwhm', String(fwhm))
     u.searchParams.set('kernel', String(kernel))

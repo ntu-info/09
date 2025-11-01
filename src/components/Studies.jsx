@@ -1,3 +1,4 @@
+import { API_BASE } from '../api'
 import { useEffect, useMemo, useState } from 'react'
 
 function classNames (...xs) { return xs.filter(Boolean).join(' ') }
@@ -21,7 +22,7 @@ export function Studies ({ query }) {
       setLoading(true)
       setErr('')
       try {
-        const url = `/query/${encodeURIComponent(query)}/studies`
+        const url = `${API_BASE}/query/${encodeURIComponent(query)}/studies`
         const res = await fetch(url, { signal: ac.signal })
         const data = await res.json().catch(() => ({}))
         if (!res.ok) throw new Error(data?.error || `HTTP ${res.status}`)
