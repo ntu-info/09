@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/lotus-bf", "destination": "/lotus-bf/" },
+    { "source": "/lotus-bf/(assets/.*)", "destination": "/lotus-bf/$1" },
+    { "source": "/lotus-bf/((?!assets/|favicon\\.ico|robots\\.txt|sitemap\\.xml|.*\\..*).*)", "destination": "/lotus-bf/" }
+  ]
+}
