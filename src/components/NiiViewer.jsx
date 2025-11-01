@@ -1,10 +1,10 @@
-import { API_BASE } from '../api'
 
 // 顯示設定：讓 x>0 出現在畫面右側（右腦在右）
 const X_RIGHT_ON_SCREEN_RIGHT = true;
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import * as nifti from 'nifti-reader-js'
+import { API_BASE } from '../api'
 
 const MNI_BG_URL = 'static/mni_2mm.nii.gz'
 
@@ -61,12 +61,12 @@ export function NiiViewer({ query }) {
 
   const mapUrl = useMemo(() => {
     if (!query) return ''
-    const u = `${API_BASE}/query/${encodeURIComponent(query)}/nii`
+    const u = new URL(`${API_BASE}/query/${encodeURIComponent(query)}/nii`)
     u.searchParams.set('voxel', String(voxel))
     u.searchParams.set('fwhm', String(fwhm))
     u.searchParams.set('kernel', String(kernel))
     u.searchParams.set('r', String(r))
-    return u.pathname + u.search
+    return u.toString()
   }, [query, voxel, fwhm, kernel, r])
 
   // ---------- utils ----------
