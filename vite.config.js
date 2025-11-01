@@ -4,8 +4,6 @@ import react from '@vitejs/plugin-react'
 import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
-  base: '/lotus-bf/',
-
   plugins: [react()],
   resolve: {
     alias: {
